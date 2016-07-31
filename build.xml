@@ -2,21 +2,18 @@
 <!DOCTYPE project [
 ]>
 
-<project name="Affluence Test" default="run" basedir=".">
+<project name="GTOM Test" default="run" basedir=".">
         <property name="classes.dir" value="${basedir}\bin" />
         <property name="src.dir" value="${basedir}\src" />
         <property name="test-output.dir" value="${basedir}\test-output" />
          <property name="testng-xslt.dir" value="${basedir}\testng-xslt" />
-        <property name="server-stop.dir" value="${basedir}\server-stop" />
-        <property name="browser" value="C:/Program Files/Mozilla Firefox/
-firefox.exe"/>
-      <property name="BIN" value="${basedir}/bin" />
+         <property name="BIN" value="${basedir}/bin" />
     <path id="master-classpath">
             <pathelement location="${BIN}" />
             <fileset dir="lib">
                 <include name="**/*.jar" />
             </fileset>
-        </path>
+            </path>
 
         <path id="lib">
         
@@ -27,7 +24,6 @@ firefox.exe"/>
                 <pathelement path="${basedir}\lib\poi-3.0.jar"/>
                 <pathelement path="${basedir}\lib\saxon-8.7.jar"/>
                 <pathelement path="${basedir}\lib\SaxonLiaison.jar"/>
-              
                 <pathelement path="${basedir}\${classes.dir}"/>
                 
         </path>
@@ -57,9 +53,8 @@ haltOnfailure="true">
                 <delete dir="${testng-xslt.dir}" />
                 <mkdir dir="${testng-xslt.dir}"/>
                 
-                <delete dir="${server-stop.dir}" />
-                <mkdir dir="${server-stop.dir}"/>
-    </target>
+              
+      </target>
 
         <target name="compile" depends="clean">
                 <echo>Compiling...</echo>

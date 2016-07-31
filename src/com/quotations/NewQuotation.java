@@ -14,9 +14,9 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.Test;	
 import com.OR.OR;
-public class VerifyValidSignUp extends TestBase {
+public class NewQuotation extends TestBase {
     
 
   
