@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE project [
+]>
+
+<project name="Affluence Test" default="run" basedir=".">
+        <property name="classes.dir" value="${basedir}\bin" />
+        <property name="src.dir" value="${basedir}\src" />
+        <property name="test-output.dir" value="${basedir}\test-output" />
+         <property name="testng-xslt.dir" value="${basedir}\testng-xslt" />
+        <property name="server-stop.dir" value="${basedir}\server-stop" />
+        <property name="browser" value="C:/Program Files/Mozilla Firefox/
+firefox.exe"/>
+      <property name="BIN" value="${basedir}/bin" />
+    <path id="master-classpath">
+            <pathelement location="${BIN}" />
+            <fileset dir="lib">
+                <include name="**/*.jar" />
+            </fileset>
+        </path>
+
+        <path id="lib">
+        
+        
+                <pathelement path="${basedir}\lib\selenium-server-standalone-2.53.0.jar"/>
+                <pathelement path="${basedir}\lib\testng-6.9.9.jar"/>
+                <pathelement path="${basedir}\lib\selenium-java-2.53.0.jar"/>                
+                <pathelement path="${basedir}\lib\poi-3.0.jar"/>
+                <pathelement path="${basedir}\lib\saxon-8.7.jar"/>
+                <pathelement path="${basedir}\lib\SaxonLiaison.jar"/>
+              
+                <pathelement path="${basedir}\${classes.dir}"/>
+                
+        </path>
+
+        <taskdef resource="testngtasks" classpathref="lib"/>
+
+       
+
+        <target name="runTestNG">
+                <testng outputDir="${test-output.dir}" classpathref="lib"
+haltOnfailure="true">
+                        <classfileset dir="${classes.dir}" includes="**/*.class" />
+                        <xmlfileset dir="${src.dir}" includes="testng.xml" />
+                </testng>
+        </target>
+
+        
+
+        <target name="clean">
+                <echo>Initlizing...</echo>
+                <delete dir="${classes.dir}" />
+                <mkdir dir="${classes.dir}"/>
+               
+               <delete dir="${test-output.dir}" />
+                <mkdir dir="${test-output.dir}"/>
+                
+                <delete dir="${testng-xslt.dir}" />
+                <mkdir dir="${testng-xslt.dir}"/>
+                
+                <delete dir="${server-stop.dir}" />
+                <mkdir dir="${server-stop.dir}"/>
+    </target>
+
+        <target name="compile" depends="clean">
+                <echo>Compiling...</echo>
+                <javac debug="true" srcdir="${src.dir}" destdir="${classes.dir}"
+classpathref="lib" />
+
+        </target>
+
+        <target name="run" description="start,run and stop">
+
+                 <parallel>
+                        
+                        <sequential>
+                                
+                                <antcall target="runTestNG" />
+                                
+                        </sequential>
+                </parallel>
+        </target>
+        <target name="xslt">
+        <delete dir="${basedir}/testng-xslt">
+        </delete>
+        <mkdir dir="${basedir}/testng-xslt">
+        </mkdir>
+        <xslt in="${basedir}/test-output/testng-results.xml" style="${basedir}/testng-results.xsl" out="${basedir}/testng-xslt/index.html">
+            <param expression="${basedir}/testng-xslt/" name="testNgXslt.outputDir" />
+
+            <param expression="true" name="testNgXslt.sortTestCaseLinks" />
+
+            <param expression="FAIL,SKIP,PASS,CONF,BY_CLASS" name="testNgXslt.testDetailsFilter" />
+
+            <param expression="true" name="testNgXslt.showRuntimeTotals" />
+
+            <classpath refid="master-classpath">
+            </classpath>
+        </xslt>
+    </target>
+    
+    
+
+
+
+
+</project> 

@@ -1,0 +1,22 @@
+
+
+
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+
+<testng-results>
+
+<suite name="Events Page Suite">
+ 
+  <test name="GTOM Test" preserve-order="true">
+ 
+       <classes>
+      <class name="com.quotations.NewQuotation" />  
+      </classes> 
+  </test> 
+  
+</suite>
+
+</testng-results>
+
+
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Ant suite]">
+  <test name="Ant test(failed)">
+    <classes>
+      <class name="com.quotations.TestBase">
+        <methods>
+          <include name="afterSuite"/>
+          <include name="beforeSuite"/>
+        </methods>
+      </class> <!-- com.quotations.TestBase -->
+      <class name="com.quotations.VerifyValidSignUp">
+        <methods>
+          <include name="LoginTest" invocation-numbers="0 1"/>
+          <include name="beforeSignUp"/>
+          <include name="afterSignUp"/>
+        </methods>
+      </class> <!-- com.quotations.VerifyValidSignUp -->
+    </classes>
+  </test> <!-- Ant test(failed) -->
+</suite> <!-- Failed suite [Ant suite] -->
